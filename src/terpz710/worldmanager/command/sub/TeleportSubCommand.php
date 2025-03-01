@@ -20,6 +20,7 @@ use terpz710\worldmanager\WorldManager;
 class TeleportSubCommand extends BaseSubCommand {
 
     protected function prepare() : void{
+        $this->setPermission("worldmanager.cmd");
         $this->registerArgument(0, new RawStringArgument("world"));
     }
 
