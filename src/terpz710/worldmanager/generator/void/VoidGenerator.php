@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace terpz710\worldmanager\generator;
+namespace terpz710\worldmanager\generator\void;
 
 use pocketmine\world\ChunkManager;
 use pocketmine\world\generator\Generator;
