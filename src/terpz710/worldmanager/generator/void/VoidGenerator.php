@@ -18,11 +18,11 @@ class VoidGenerator extends Generator {
     public function generateChunk(ChunkManager $world, int $chunkX, int $chunkZ) : void{
         $chunk = $world->getChunk($chunkX, $chunkZ);
 
-		  if($chunkX === 16 && $chunkZ === 16) {
-			  $chunk->setBlockStateId(0, 64, 0, VanillaBlocks::GRASS()->getStateId());
-		  }
+        if ($chunkX === 16 && $chunkZ === 16) {
+            $chunk->setBlockStateId(0, 64, 0, VanillaBlocks::GRASS()->getStateId());
+        }
     }
 
-    public function populateChunk(ChunkManager $world, int $chunkX, int $chunkZ){
+    public function populateChunk(ChunkManager $world, int $chunkX, int $chunkZ) : void{
     }
 }
