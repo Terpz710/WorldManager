@@ -24,17 +24,6 @@ final class WorldManager extends PluginBase {
 
     protected function onLoad() : void{
         self::$instance = $this;
-    }
-
-    public function onEnable() : void{
-        if (!PacketHooker::isRegistered()) {
-            PacketHooker::register($this);
-        }
-
-        $this->getServer()->getCommandMap()->register(
-            "WorldManager", 
-            new WorldCommand($this, "worldmanager", "Create|Delete|Load|Unload worlds", ["wm"])
-        );
 
         $generators = [
             "end" => EndGenerator::class,
@@ -46,6 +35,17 @@ final class WorldManager extends PluginBase {
         foreach ($generators as $name => $class) {
             GeneratorManager::getInstance()->addGenerator($class, $name, fn() => null, true);
         }
+    }
+
+    public function onEnable() : void{
+        if (!PacketHooker::isRegistered()) {
+            PacketHooker::register($this);
+        }
+
+        $this->getServer()->getCommandMap()->register(
+            "WorldManager", 
+            new WorldCommand($this, "worldmanager", "Create|Delete|Load|Unload worlds", ["wm"])
+        );
     }
 
     public static function getInstance() : self{
