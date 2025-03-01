@@ -11,7 +11,7 @@ use terpz710\worldmanager\command\sub\TeleportSubCommand;
 
 use CortexPE\Commando\BaseCommand;
 
-class WorldCommand extends BaseCommand;
+class WorldCommand extends BaseCommand {
 
     protected function prepare() : void{
         $this->setPermission("worldmanager.cmd");
