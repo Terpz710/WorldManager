@@ -19,6 +19,8 @@ use CortexPE\Commando\args\RawStringArgument;
 class CreateSubCommand extends BaseSubCommand {
 
     protected function prepare() : void{
+        $this->setPermission("worldmanager.cmd");
+        
         $this->registerArgument(0, new RawStringArgument("name"));
         $this->registerArgument(1, new IntegerArgument("seed", true));
         $this->registerArgument(2, new RawStringArgument("generator", true));
