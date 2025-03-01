@@ -58,6 +58,6 @@ class TeleportSubCommand extends BaseSubCommand {
         }
 
         $sender->teleport($world->getSafeSpawn());
-        $sender->sendMessage("§aTeleported to world: §b$worldName");
+        $sender->sendMessage("Teleported to world: " . $worldName);
     }
 }
