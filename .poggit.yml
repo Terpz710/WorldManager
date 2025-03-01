@@ -5,5 +5,12 @@ branches:
 projects:
   WorldManager:
     path: ""
+    libs:
+      Commando:
+        src: ACM-PocketMine-MP/Commando/Commando
+        version: ^3.2.1
+      VanillaGenerator:
+        src: CzechPMDevs/VanillaGenerator/VanillaGenerator
+        version: ^0.0.6
     lint: false
 ...
