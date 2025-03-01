@@ -22,11 +22,11 @@ final class WorldManager extends PluginBase {
 
     protected static self $instance;
 
-    protected function onLoad(): void {
+    protected function onLoad() : void{
         self::$instance = $this;
     }
 
-    public function onEnable(): void {
+    public function onEnable() : void{
         if (!PacketHooker::isRegistered()) {
             PacketHooker::register($this);
         }
@@ -48,7 +48,7 @@ final class WorldManager extends PluginBase {
         }
     }
 
-    public static function getInstance(): self {
+    public static function getInstance() : self{
         return self::$instance;
     }
 }
