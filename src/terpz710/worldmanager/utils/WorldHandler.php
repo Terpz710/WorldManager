@@ -13,7 +13,7 @@ final class WorldHandler {
     use SingletonTrait;
 
     public function getGeneratorByName(string $name) : ?GeneratorManagerEntry{
-        $name = match(strtolower($name)) {
+        $name = match (strtolower($name)) {
             "normal", "classic", "basic", "vanilla" => "vanilla_normal",
             "nether", "hell" => "vanilla_nether",
             "ender" => "end",
@@ -23,6 +23,7 @@ final class WorldHandler {
             "void", "empty", "emptyworld" => "void",
             default => strtolower($name)
         };
-	     return GeneratorManager::getInstance()->getGenerator($name);
+
+        return GeneratorManager::getInstance()->getGenerator($name);
     }
 }
