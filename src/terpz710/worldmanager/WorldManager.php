@@ -22,30 +22,33 @@ final class WorldManager extends PluginBase {
 
     protected static self $instance;
 
-    protected function onLoad() : void{
+    protected function onLoad(): void {
         self::$instance = $this;
     }
 
-    public function onEnable() : void{
-        if(!PacketHooker::isRegistered()) {
+    public function onEnable(): void {
+        if (!PacketHooker::isRegistered()) {
             PacketHooker::register($this);
-	     }
-	
-        $this->getServer()->getCommandMap()->register("WorldManager", new WorldCommand($this, "worldmanager", "Create|Delete|Load|Unload worlds", ["wm"]));
+        }
+
+        $this->getServer()->getCommandMap()->register(
+            "WorldManager", 
+            new WorldCommand($this, "worldmanager", "Create|Delete|Load|Unload worlds", ["wm"])
+        );
 
         $generators = [
-			    "end" => EndGenerator::class,
-			    "void" => VoidGenerator::class,
-			    "vanilla_normal" => OverworldGenerator::class,
-			    "vanilla_nether" => NetherGenerator::class
-		  ];
+            "end" => EndGenerator::class,
+            "void" => VoidGenerator::class,
+            "vanilla_normal" => OverworldGenerator::class,
+            "vanilla_nether" => NetherGenerator::class
+        ];
 
-		  foreach($generators as $name => $class) {
-		      GeneratorManager::getInstance()->addGenerator($class, $name, fn() => null, true);
-	     }
+        foreach ($generators as $name => $class) {
+            GeneratorManager::getInstance()->addGenerator($class, $name, fn() => null, true);
+        }
     }
 
-    public static function getInstance() : self{
+    public static function getInstance(): self {
         return self::$instance;
     }
 }
