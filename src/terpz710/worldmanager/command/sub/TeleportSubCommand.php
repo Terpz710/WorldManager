@@ -13,7 +13,7 @@ use pocketmine\player\Player;
 use pocketmine\world\World;
 
 use CortexPE\Commando\BaseSubCommand;
-CortexPE\Commando\args\RawStringArgument
+use CortexPE\Commando\args\RawStringArgument;
 
 use terpz710\worldmanager\WorldManager;
 
