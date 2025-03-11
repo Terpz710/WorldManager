@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace terpz710\worldmanager\generator\end;
 
+use pocketmine\block\Block;
+use pocketmine\block\BlockTypeIds;
 use pocketmine\block\VanillaBlocks;
 
-use pocketmine\world\World;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\format\Chunk;
+use pocketmine\world\format\PalettedBlockArray;
+use pocketmine\world\format\SubChunk;
 use pocketmine\world\generator\Generator;
 use pocketmine\world\generator\noise\Simplex;
 use pocketmine\world\generator\populator\Populator;
