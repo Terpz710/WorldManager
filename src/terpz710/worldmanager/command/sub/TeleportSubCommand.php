@@ -10,17 +10,16 @@ use pocketmine\command\CommandSender;
 
 use pocketmine\player\Player;
 
-use pocketmine\world\World;
+use pocketmine\math\Vector3;
 
 use CortexPE\Commando\BaseSubCommand;
 use CortexPE\Commando\args\RawStringArgument;
-
-use terpz710\worldmanager\WorldManager;
 
 class TeleportSubCommand extends BaseSubCommand {
 
     protected function prepare() : void{
         $this->setPermission("worldmanager.cmd");
+        
         $this->registerArgument(0, new RawStringArgument("world"));
     }
 
@@ -37,7 +36,6 @@ class TeleportSubCommand extends BaseSubCommand {
 
         $worldName = $args["world"];
         $server = Server::getInstance();
-
         $worldManager = $server->getWorldManager();
         $world = $worldManager->getWorldByName($worldName);
 
@@ -57,7 +55,8 @@ class TeleportSubCommand extends BaseSubCommand {
             }
         }
 
-        $sender->teleport($world->getSafeSpawn());
-        $sender->sendMessage("Teleported to world: " . $worldName);
+        $targetPosition = new Vector3(256, 0, 256);
+        $sender->teleport($targetPosition);
+        $sender->sendMessage("Teleported to world: " . $worldName . " at (256, 0, 256)");
     }
 }
