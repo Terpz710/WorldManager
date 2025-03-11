@@ -45,6 +45,14 @@ class EndGenerator extends Generator {
         $this->random->setSeed(0xdeadbeef ^ ($chunkX << 8) ^ $chunkZ ^ $this->seed);
 
         $chunk = $world->getChunk($chunkX, $chunkZ);
+		foreach($chunk->getSubChunks() as $y => $subChunk) {
+			$chunk->setSubChunk($y, new SubChunk(
+				BlockTypeIds::AIR << Block::INTERNAL_STATE_DATA_BITS,
+				[],
+				new PalettedBlockArray(BiomeIds::THE_END)
+			));
+		}
+        
         $noise = $this->baseNoise->getFastNoise2D(16, 16, 2, $chunkX * 16, 0, $chunkZ * 16);
         $islandNoise = $this->islandNoise->getFastNoise2D(16, 16, 2, $chunkX * 16, 0, $chunkZ * 16);
 
